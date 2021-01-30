@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from itertools import chain, zip_longest, groupby
 from operator import itemgetter
 import pandas as pd
+import os.path
 
 POP_SIZE_100 = 20
 ITERATIONS = 50
@@ -435,11 +436,15 @@ def export_time():
     idm = [x[1] for x in TIMES_IDM]
     oem = [x[1] for x in TIMES_OEM]
     df = pd.DataFrame({"RSM": rsm, "IEM": iem, "IDM": idm, "OEM": oem})
-    df.to_excel(r"C:\Users\maybe\Desktop\cs4040-researchmethods\mini-project-code\att48.xlsx", sheet_name="att48", index=False)
+    path_final = "results//" + PROBLEM + ".xlsx"
+    sheet = PROBLEM
+    df.to_excel(path_final, sheet_name=sheet, index=False)
 
 def export_error(rsm, iem, idm, oem):
     df = pd.DataFrame({"RSM": rsm, "IEM": iem, "IDM": idm, "OEM": oem})
-    df.to_excel(r"C:\Users\maybe\Desktop\cs4040-researchmethods\mini-project-code\att48_error.xlsx", sheet_name="att48_error", index=False)
+    path_final = "results//" + PROBLEM + "_error.xlsx"
+    sheet = PROBLEM + "_error"
+    df.to_excel(path_final, sheet_name=sheet, index=False)
 
 def genetic_algorithm():
     path_distances_gr17 = []
